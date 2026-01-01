@@ -2,6 +2,7 @@
 	import { cn } from "$lib/utils";
 	import { MapPin } from "lucide-svelte";
 	import { Separator } from "$lib/registry/ui/separator/index";
+	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
 
 	interface Props {
 		className?: string;
@@ -22,6 +23,7 @@
 		</div>
 		<div class="flex items-center gap-1.5 h-4">
 			<Separator orientation="vertical" />
+			<ThemeToggle />
 		</div>
 	</nav>
 </header>
