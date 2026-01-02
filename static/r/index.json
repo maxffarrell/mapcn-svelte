@@ -1,0 +1,16 @@
+[
+	{
+		"name": "map",
+		"title": "Map",
+		"type": "registry:ui",
+		"description": "A MapLibre-powered map component with markers, popups, tooltips, routes, and controls.",
+		"dependencies": [
+			"maplibre-gl"
+		],
+		"registryDependencies": [],
+		"meta": {
+			"author": "MariusLang"
+		},
+		"relativeUrl": "map.json"
+	}
+]

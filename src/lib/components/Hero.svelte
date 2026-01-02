@@ -57,9 +57,11 @@
 	</div>
 
 	<div class="flex flex-wrap justify-center items-center gap-3 animate-fade-up delay-300">
-		<Button href="/docs" class="inline-flex items-center gap-2">
-			Get Started
-			<ArrowRight class="size-4" />
+		<Button>
+			<a href="/docs" class="inline-flex items-center gap-2">
+				Get Started
+				<ArrowRight class="size-4" />
+			</a>
 		</Button>
 		<Button variant="outline" size="lg">
 			<a href="/docs/basic-map">View Examples</a>
