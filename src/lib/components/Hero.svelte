@@ -13,8 +13,37 @@
 			Beautiful maps, made simple.
 		</h1>
 		<p class="text-foreground/80 text-lg max-w-2xl mx-auto animate-fade-up delay-100">
-			Free & open source map components. Zero config, one command setup. Built on MapLibre GL, styled with Tailwind,
-			works seamlessly with shadcn/ui.
+			Free & open source map components for Svelte. Zero config, one command setup. Built on MapLibre GL, styled with Tailwind,
+			works seamlessly with shadcn-svelte.
+		</p>
+		<p class="text-muted-foreground text-sm max-w-2xl mx-auto animate-fade-up delay-150">
+			Svelte port of
+			<a
+				href="https://mapcn.vercel.app"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="font-medium text-foreground hover:underline"
+			>
+				mapcn
+			</a>
+			by
+			<a
+				href="https://github.com/AnmolSaini16"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="font-medium text-foreground hover:underline"
+			>
+				Anmol
+			</a>.
+			Ported by
+			<a
+				href="https://github.com/MariusLang"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="font-medium text-foreground hover:underline"
+			>
+				Marius Lang
+			</a>.
 		</p>
 	</div>
 

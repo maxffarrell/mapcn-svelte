@@ -1,22 +1,93 @@
-# registry-template
+<div align="center">
+  <h1>mapcn-svelte</h1>
+  <p><strong>Beautiful maps, made simple.</strong></p>
 
-You can use the `shadcn-svelte` CLI to run your own component registry. Running your own
-component registry allows you to distribute your custom components, hooks, pages, and
-other files to any Svelte project.
+  <p>
+    Free & open source map components for Svelte. Zero config, one command setup.<br/>
+    Built on <a href="https://maplibre.org/">MapLibre GL</a>, styled with <a href="https://tailwindcss.com/">Tailwind</a>, works seamlessly with <a href="https://www.shadcn-svelte.com/">shadcn-svelte</a>.
+  </p>
 
-## Getting Started
+  <p>
+    <a href="https://your-domain.vercel.app">Get Started</a> •
+    <a href="https://your-domain.vercel.app/docs/installation">Installation</a> •
+    <a href="https://your-domain.vercel.app/docs/basic-map">Examples</a>
+  </p>
+</div>
 
-This is a template for creating a custom registry using SvelteKit.
+---
 
-- The template uses a `registry.json` file to define components and their files.
-- The `shadcn-svelte build` command is used to build the registry.
-- The registry items are served as static files under `public/r/[name].json`.
-- Every registry item is compatible with the `shadcn-svelte` CLI.
-- The `card`, `button`, `input`, `label`, `textarea` components here would come from the `shadcn-svelte` registry, but the `stepper` component is a custom `ui` component you can use as a reference for creating and referencing "local" `ui` components.
+## About
 
-> [!IMPORTANT]
-> Don't forget to replace the version of `shadcn-svelte` in the `package.json` file with the version you want to use.
+This is a **Svelte port** of [mapcn](https://github.com/AnmolSaini16/mapcn) by [Anmol Saini](https://github.com/AnmolSaini16). The original React version provides beautiful, composable map components for React applications. This port brings the same developer experience to Svelte 5, maintaining feature parity while adapting to Svelte's reactive paradigms.
+
+## Features
+
+- 🎨 **Theme-aware** — Automatically adapts to light/dark mode
+- 🎯 **Zero config** — Works out of the box with sensible defaults
+- 📦 **shadcn-svelte compatible** — Uses the same patterns and styling conventions
+- 🗺️ **MapLibre GL powered** — Full access to MapLibre's powerful mapping capabilities
+- 🧩 **Composable** — Build complex map UIs with simple, declarative components
+- 📍 **Markers & Popups** — Rich marker system with popups, tooltips, and labels
+- 🛤️ **Routes** — Draw routes and paths on your maps
+- 🎮 **Controls** — Zoom, compass, locate, and fullscreen controls
+- ⚡ **Svelte 5** — Built with Svelte 5's runes for optimal reactivity
+
+## Installation
+
+```bash
+npx shadcn-svelte@latest add https://your-domain.vercel.app/r/map.json
+```
+
+This will install `maplibre-gl` and add all map components to your project.
+
+## Quick Start
+
+```svelte
+<script lang="ts">
+  import { Map, MapControls } from "$lib/components/ui/map";
+</script>
+
+<div class="h-[400px] w-full">
+  <Map center={[-74.006, 40.7128]} zoom={12}>
+    <MapControls />
+  </Map>
+</div>
+```
 
 ## Documentation
 
-Visit the [shadcn-svelte documentation](https://shadcn-svelte.com/docs/registry) to view the full documentation.
+Full documentation is available at [your-domain.vercel.app/docs](https://your-domain.vercel.app/docs)
+
+## Components
+
+- `Map` — Root map container with theme support
+- `MapMarker` — Place markers on the map
+- `MarkerContent` — Custom marker visuals
+- `MarkerPopup` — Click-triggered popups
+- `MarkerTooltip` — Hover tooltips
+- `MarkerLabel` — Positioned labels
+- `MapPopup` — Standalone popups
+- `MapControls` — UI controls (zoom, compass, locate, fullscreen)
+- `MapRoute` — Draw routes and paths
+
+## Credits
+
+- Original React version: [mapcn](https://github.com/AnmolSaini16/mapcn) by [Anmol Saini](https://github.com/AnmolSaini16)
+- Svelte port: [Marius Lang](https://github.com/MariusLang)
+- Built with [MapLibre GL](https://maplibre.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Compatible with [shadcn-svelte](https://www.shadcn-svelte.com/)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+MIT License - see the [LICENSE](LICENSE) file for details.
