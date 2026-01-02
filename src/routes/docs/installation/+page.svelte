@@ -11,13 +11,13 @@
 	import DocsNote from "$lib/components/docs/DocsNote.svelte";
 
 	const siteUrl =
-		import.meta.env.PUBLIC_SITE_URL ?? "site-url-here";
+		import.meta.env.PUBLIC_SITE_URL ?? "https://your-domain.vercel.app";
 
-	const installCode = `npx shadcn@latest add ${siteUrl}/maps/map.json`;
+	const installCode = `npx shadcn-svelte@latest add ${siteUrl}/r/map.json`;
 
 	const usageCode = `<script lang="ts">
-  import { Map, MapControls } from "$lib/registry/blocks/map";
-  import { Card } from "$lib/registry/ui/card";
+  import { Map, MapControls } from "$lib/components/ui/map";
+  import { Card } from "$lib/components/ui/card";
 </script>
 
 <Card class="h-[300px] overflow-hidden p-0">

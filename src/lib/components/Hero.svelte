@@ -3,7 +3,8 @@
 	import { ArrowRight } from "@lucide/svelte";
 	import CopyButton from "$lib/components/CopyButton.svelte";
 
-	const installCommand = `npx shadcn@latest add https://mapcn.vercel.app/maps/map.json`;
+	const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? "https://your-domain.vercel.app";
+	const installCommand = `npx shadcn-svelte@latest add ${siteUrl}/r/map.json`;
 </script>
 
 <div class="space-y-6 mb-12">
