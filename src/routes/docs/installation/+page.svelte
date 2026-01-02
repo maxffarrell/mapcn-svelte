@@ -15,19 +15,16 @@
 
 	const installCode = `npx shadcn@latest add ${siteUrl}/maps/map.json`;
 
-	// TODO: Adapt the code to svelte
-	const usageCode = `import { Map, MapControls } from "@/components/ui/map";
-import { Card } from "@/components/ui/card";
+	const usageCode = `<script lang="ts">
+  import { Map, MapControls } from "$lib/registry/blocks/map";
+  import { Card } from "$lib/registry/ui/card";
+</script>
 
-export function MyMap() {
-  return (
-    <Card className="h-[300px] p-0 overflow-hidden">
-      <Map center={[-74.006, 40.7128]} zoom={11}>
-        <MapControls />
-      </Map>
-    </Card>
-  );
-}`;
+<Card class="h-[300px] overflow-hidden p-0">
+  <Map center={[-74.006, 40.7128]} zoom={11}>
+    <MapControls />
+  </Map>
+</Card>`;
 </script>
 
 <DocsLayout

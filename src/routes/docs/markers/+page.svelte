@@ -56,7 +56,7 @@
 	<ComponentPreview
 		code={popupSource}
 		highlightedCode={popupHighlighted}
-		className="h-[500px]"
+		class="h-[500px]"
 	>
 		<PopupExample />
 	</ComponentPreview>

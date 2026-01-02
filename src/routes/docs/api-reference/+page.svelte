@@ -21,7 +21,19 @@
   <MapRoute coordinates={...} />
 </Map>`;
 
-	const useMapCode = `const { map, isLoaded } = useMap();`;
+	const useMapCode = `<script lang="ts">
+  import { getContext } from "svelte";
+  import type MapLibreGL from "maplibre-gl";
+
+  const mapCtx = getContext<{
+    getMap: () => MapLibreGL.Map | null;
+    isLoaded: () => boolean;
+  }>("map");
+
+  // Access the map instance
+  const map = mapCtx.getMap();
+  const isLoaded = mapCtx.isLoaded();
+</script>`;
 </script>
 
 <DocsLayout
@@ -99,30 +111,30 @@
 		/>
 	</DocsSection>
 
-	<!-- useMap -->
-	<DocsSection title="useMap">
+	<!-- Map Context -->
+	<DocsSection title="Map Context">
 		<p>
-			A hook that provides access to the MapLibre map instance and loading
-			state. Must be used within a
+			Access the MapLibre map instance and loading state via Svelte context.
+			Must be used within a
 			<DocsCode>Map</DocsCode>
 			component.
 		</p>
 
-		<CodeBlock code={useMapCode} language="ts" showCopyButton={false} />
+		<CodeBlock code={useMapCode} language="svelte" showCopyButton={false} />
 
 		<p>
-			Returns
-			<DocsCode>map</DocsCode>
-			(
+			Provides
+			<DocsCode>getMap()</DocsCode>
+			returning the
 			<DocsLink
 				href="https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/"
 				external
 			>
 				MapLibre.Map
 			</DocsLink>
-			) and
-			<DocsCode>isLoaded</DocsCode>
-			(boolean).
+			instance, and
+			<DocsCode>isLoaded()</DocsCode>
+			returning a boolean.
 		</p>
 	</DocsSection>
 

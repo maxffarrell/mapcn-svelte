@@ -5,11 +5,11 @@
 	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
 
 	interface Props {
-		className?: string;
+		class?: string;
 		children?: import("svelte").Snippet;
 	}
 
-	const { className, children }: Props = $props();
+	const { class: className, children }: Props = $props();
 </script>
 
 <header class={cn("w-full px-6 py-4", className)}>

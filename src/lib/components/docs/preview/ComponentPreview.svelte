@@ -4,12 +4,12 @@
 	const {
 		code,
 		highlightedCode,
-		className,
+		class: className,
 		children,
 	} = $props<{
 		code: string;
 		highlightedCode: string;
-		className?: string;
+		class?: string;
 		children?: import("svelte").Snippet;
 	}>();
 </script>
@@ -17,7 +17,7 @@
 <ComponentPreviewClient
 	{code}
 	{highlightedCode}
-	class={className}
+	{className}
 >
 	{@render children?.()}
 </ComponentPreviewClient>
