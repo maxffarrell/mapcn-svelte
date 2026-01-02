@@ -124,23 +124,6 @@
   }
 </script>
 
-{#snippet controlButton(onclick: () => void, label: string, disabled: boolean = false)}
-  <button
-    {onclick}
-    aria-label={label}
-    type="button"
-    class={cn(
-      "flex size-8 items-center justify-center transition-colors hover:bg-accent dark:hover:bg-accent/40",
-      disabled && "pointer-events-none cursor-not-allowed opacity-50"
-    )}
-    {disabled}
-  >
-    {#if $$slots.default}
-      <slot />
-    {/if}
-  </button>
-{/snippet}
-
 {#if mapCtx.isLoaded()}
   <div
     class={cn(

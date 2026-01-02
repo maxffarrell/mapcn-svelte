@@ -9,7 +9,6 @@
 		MapPin,
 		MessageSquare,
 		Route,
-		Wrench,
 		Settings,
 	} from "lucide-svelte";
 
@@ -74,10 +73,7 @@
 										class="flex items-center gap-2"
 										onclick={() => setOpenMobile(false)}
 									>
-										<svelte:component
-											this={item.icon}
-											class="size-4"
-										/>
+										<item.icon class="size-4" />
 										<span>{item.title}</span>
 									</a>
 								</SidebarMenuButton>

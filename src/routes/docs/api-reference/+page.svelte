@@ -3,7 +3,7 @@
 	import DocsNote from "$lib/components/docs/DocsNote.svelte";
 	import DocsLink from "$lib/components/docs/DocsLink.svelte";
 	import DocsSection from "$lib/components/docs/DocsSection.svelte";
-	import CodeBlock from "$lib/components/docs/preview/CodeBlock.svelte";
+	import { CodeBlock } from "$lib/components/docs/preview";
 	import DocsCode from "$lib/components/docs/DocsCode.svelte";
 	import DocsPropTable from "$lib/components/docs/DocsPropTable.svelte";
 

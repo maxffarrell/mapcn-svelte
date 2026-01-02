@@ -65,7 +65,7 @@
 				<MarkerContent>
 					<div
 						class="size-5 cursor-pointer rounded-full border-2 border-white bg-rose-500 shadow-lg transition-transform hover:scale-110"
-					/>
+					></div>
 					<MarkerLabel position="bottom">
 						{place.label}
 					</MarkerLabel>

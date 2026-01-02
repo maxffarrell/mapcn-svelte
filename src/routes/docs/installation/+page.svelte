@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CodeBlock from "$lib/components/docs/preview/CodeBlock.svelte";
+	import { CodeBlock } from "$lib/components/docs/preview";
 	import { Card } from "$lib/registry/ui/card";
 	import { Map, MapControls } from "$lib/components/ui/map";
 	import DocsLayout from "$lib/components/docs/DocsLayout.svelte";

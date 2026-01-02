@@ -39,7 +39,7 @@
 				<MarkerContent>
 					<div
 						class="size-4 rounded-full border-2 border-white bg-primary shadow-lg"
-					/>
+					></div>
 				</MarkerContent>
 
 				<MarkerTooltip>

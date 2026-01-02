@@ -3,20 +3,20 @@
 	import CopyButton from "$lib/components/CopyButton.svelte";
 	import { onMount } from "svelte";
 
-	const {
+	let {
 		code,
-		language = "tsx",
+		language = "svelte",
 		showCopyButton = true,
-	} = $props<{
+	}: {
 		code: string;
 		language?: string;
 		showCopyButton?: boolean;
-	}>();
+	} = $props();
 
 	let highlightedCode = $state<string>("");
 
 	onMount(async () => {
-		highlightedCode = await highlightCode(code, "tsx");
+		highlightedCode = await highlightCode(code, language);
 	});
 </script>
 
@@ -32,6 +32,10 @@
 	<div
 		class="overflow-auto bg-muted/20 p-4 text-sm [&_pre]:bg-transparent! [&_code]:bg-transparent!"
 	>
-		{@html highlightedCode}
+		{#if highlightedCode}
+			{@html highlightedCode}
+		{:else}
+			<pre><code>{code}</code></pre>
+		{/if}
 	</div>
 </div>

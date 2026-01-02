@@ -48,7 +48,7 @@
 			<MarkerContent>
 				<div
 					class="size-5 rounded-full border-2 border-white bg-green-500 shadow-lg"
-				/>
+				></div>
 				<MarkerLabel position="bottom">
 					Start: {start.name}
 				</MarkerLabel>
@@ -59,7 +59,7 @@
 			<MarkerContent>
 				<div
 					class="size-5 rounded-full border-2 border-white bg-red-500 shadow-lg"
-				/>
+				></div>
 				<MarkerLabel position="bottom">
 					End: {end.name}
 				</MarkerLabel>

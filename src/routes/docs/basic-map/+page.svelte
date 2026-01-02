@@ -2,7 +2,7 @@
 	import DocsLayout from "$lib/components/docs/DocsLayout.svelte";
 	import DocsSection from "$lib/components/docs/DocsSection.svelte";
 	import DocsCode from "$lib/components/docs/DocsCode.svelte";
-	import ComponentPreview from "$lib/components/docs/preview/ComponentPreview.svelte";
+	import { ComponentPreview } from "$lib/components/docs/preview";
 	import BasicMapExample from "$lib/components/docs/preview/examples/BasicMapExample.svelte";
 	import { page } from "$app/state";
 

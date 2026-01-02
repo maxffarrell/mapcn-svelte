@@ -4,7 +4,7 @@
 	import DocsSection from "$lib/components/docs/DocsSection.svelte";
 	import DocsCode from "$lib/components/docs/DocsCode.svelte";
 
-	import ComponentPreview from "$lib/components/docs/preview/ComponentPreview.svelte";
+	import { ComponentPreview } from "$lib/components/docs/preview";
 	import RouteExample from "$lib/components/docs/preview/examples/RouteExample.svelte";
 	import OsrmRouteExample from "$lib/components/docs/preview/examples/OsrmRouteExample.svelte";
 

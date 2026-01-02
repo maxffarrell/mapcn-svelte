@@ -43,7 +43,7 @@
 					</span>
 				</a>
 			{:else}
-				<div />
+				<div></div>
 			{/if}
 
 			{#if next}

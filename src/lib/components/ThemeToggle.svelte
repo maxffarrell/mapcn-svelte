@@ -22,7 +22,7 @@
 </script>
 
 {#if !mounted}
-	<div class="size-4" />
+	<div class="size-4"></div>
 {:else}
 	<Button
 		onclick={toggleTheme}

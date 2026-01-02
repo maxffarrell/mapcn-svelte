@@ -25,8 +25,8 @@
     isLoaded: () => boolean;
   }>("map");
 
-  const sourceId = `route-source-${id}`;
-  const layerId = `route-layer-${id}`;
+  const sourceId = $derived(`route-source-${id}`);
+  const layerId = $derived(`route-layer-${id}`);
 
   // Add route when map is ready
   $effect(() => {
