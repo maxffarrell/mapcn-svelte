@@ -134,7 +134,7 @@
       </div>
     </div>
   {/if}
-  {#if isMounted}
+  {#if isReady}
     {@render children?.()}
   {/if}
 </div>
