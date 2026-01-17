@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import { Heart, MapPin } from "lucide-svelte";
-	import { Button } from "$lib/registry/ui/button";
+	//import { Button } from "$lib/registry/ui/button";
 	import { Separator } from "$lib/registry/ui/separator/index";
 	import * as Tooltip from "$lib/registry/ui/tooltip/index.js";
 	import GitHubButton from "$lib/components/GitHubButton.svelte";
 	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
-	//import { CommandSearch } from "$lib/components/CommandSearch.svelte";
+	import CommandSearch from "$lib/components/CommandSearch.svelte";
 
 	interface Props {
 		class?: string;
@@ -28,7 +28,7 @@
 			</a>
 		</div>
 		<div class="flex h-4.5 items-center gap-2">
-			<!--<CommandSearch />-->
+			<CommandSearch />
 			<Separator orientation="vertical" class="hidden sm:block" />
 			<Tooltip.Provider>
 				<!--<Tooltip.Root>

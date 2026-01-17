@@ -12,7 +12,7 @@
 <div class="mx-auto flex min-h-svh max-w-5xl flex-col gap-8 px-4">
 	<Header class="mx-auto w-full max-w-5xl" />
 
-	<main class="mx-auto w-full flex-1 px-6 py-16">
+	<main class="mx-auto w-full flex-1 py-16">
 		<Hero />
 		<ExamplesGrid />
 	</main>
