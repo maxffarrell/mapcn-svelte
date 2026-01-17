@@ -53,7 +53,7 @@
 		});
 
 		// Build paint options
-		const paint: MapLibreGL.LinePaint = {
+		const paint: any = {
 			"line-color": color,
 			"line-width": width,
 			"line-opacity": opacity,

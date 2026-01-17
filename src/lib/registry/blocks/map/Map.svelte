@@ -4,8 +4,6 @@
 	import "maplibre-gl/dist/maplibre-gl.css";
 	import { browser } from "$app/environment";
 
-	let tailwindTheme: "light" | "dark" = $state("light");
-
 	type MapStyleOption = string | MapLibreGL.StyleSpecification;
 
 	interface Props {
@@ -28,7 +26,7 @@
 	let {
 		children,
 		styles,
-		theme: _theme = "light",
+		theme = "light",
 		center = [13.405, 52.52],
 		zoom = 11,
 		options = {},
@@ -40,6 +38,8 @@
 	let isLoaded = $state(false);
 	let isStyleLoaded = $state(false);
 	let initialStyleApplied = false;
+
+	let tailwindTheme: "light" | "dark" = $state(untrack(() => theme));
 
 	const mapStyles = $derived({
 		dark: styles?.dark ?? defaultStyles.dark,
