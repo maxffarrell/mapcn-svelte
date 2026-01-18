@@ -50,6 +50,10 @@
 		}
 	}
 
+	function closeDialog() {
+		open = false;
+	}
+
 	// Set up keyboard event listener with cleanup
 	$effect(() => {
 		document.addEventListener("keydown", handleKeyDown);
@@ -78,7 +82,7 @@
 		{#each docsNavigation as group}
 			<CommandGroup heading={group.title}>
 				{#each group.items as item}
-					<CommandLinkItem href={item.href} value={item.title}>
+					<CommandLinkItem href={item.href} value={item.title} onclick={closeDialog}>
 						<item.icon class="size-4" />
 						<span>{item.title}</span>
 					</CommandLinkItem>
