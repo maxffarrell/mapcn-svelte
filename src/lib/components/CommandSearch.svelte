@@ -1,6 +1,13 @@
 <script lang="ts">
 	import { Search } from "lucide-svelte";
-	import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "$lib/registry/ui/command/index.js";
+	import {
+		CommandDialog,
+		CommandEmpty,
+		CommandGroup,
+		CommandInput,
+		CommandLinkItem,
+		CommandList,
+	} from "$lib/registry/ui/command/index.js";
 	import { Kbd } from "$lib/registry/ui/kbd/index.js";
 	import {
 		Map,
@@ -27,7 +34,7 @@
 		{
 			title: "Examples",
 			items: [
-				{ title: "Basic Map", href: "/docs/basic-map", icon: Map },
+				{ title: "Map", href: "/docs/basic-map", icon: Map },
 				{ title: "Map Controls", href: "/docs/controls", icon: Settings },
 				{ title: "Markers", href: "/docs/markers", icon: MapPin },
 				{ title: "Popups", href: "/docs/popups", icon: MessageSquare },
@@ -43,11 +50,6 @@
 		}
 	}
 
-	function handleSelect(href: string) {
-		open = false;
-		window.location.href = href;
-	}
-
 	// Set up keyboard event listener with cleanup
 	$effect(() => {
 		document.addEventListener("keydown", handleKeyDown);
@@ -58,11 +60,11 @@
 <button
 	onclick={() => (open = true)}
 	aria-label="Search documentation"
-	class="hidden group sm:flex items-center gap-2 h-8 px-3 rounded-full bg-secondary/60 border border-border/40 text-sm text-muted-foreground hover:text-foreground hover:border-border transition-colors"
+	class="group bg-secondary/60 border-border/40 text-muted-foreground hover:text-foreground hover:border-border hidden h-8 items-center gap-2 rounded-full border px-3 text-sm transition-colors sm:flex"
 >
 	<Search class="size-3.5" />
 	<span class="hidden sm:inline">Search...</span>
-	<Kbd class="hidden sm:inline-flex ml-2">⌘K</Kbd>
+	<Kbd class="ml-2 hidden sm:inline-flex">⌘K</Kbd>
 </button>
 
 <CommandDialog
@@ -76,13 +78,10 @@
 		{#each docsNavigation as group}
 			<CommandGroup heading={group.title}>
 				{#each group.items as item}
-					<CommandItem
-						value={item.title}
-						onselect={() => handleSelect(item.href)}
-					>
+					<CommandLinkItem href={item.href} value={item.title}>
 						<item.icon class="size-4" />
 						<span>{item.title}</span>
-					</CommandItem>
+					</CommandLinkItem>
 				{/each}
 			</CommandGroup>
 		{/each}

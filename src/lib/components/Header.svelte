@@ -16,8 +16,8 @@
 	const { class: className, children }: Props = $props();
 </script>
 
-<header class={cn("w-full py-4", className)}>
-	<nav class="flex items-center justify-between">
+<header class={cn("h-16 w-full", className)}>
+	<nav class="container flex items-center justify-between">
 		<div class="flex items-center gap-4">
 			{#if children}
 				{@render children()}

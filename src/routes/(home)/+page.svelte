@@ -9,13 +9,11 @@
 	<title>mapcn - Map components for Svelte</title>
 </svelte:head>
 
-<div class="mx-auto flex min-h-svh max-w-5xl flex-col gap-8 px-4">
-	<Header class="mx-auto w-full max-w-5xl" />
+<div class="flex flex-col pb-28">
+	<Header class="border-b border-transparent" />
 
 	<main class="mx-auto w-full flex-1 py-16">
 		<Hero />
 		<ExamplesGrid />
 	</main>
-
-	<Footer />
 </div>
