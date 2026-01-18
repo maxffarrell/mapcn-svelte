@@ -4,11 +4,6 @@
 	import { Map } from "$lib/components/ui/map";
 	import MapControls from "$lib/registry/blocks/map/MapControls.svelte";
 
-	const mapCtx = getContext<{
-		getMap: () => MapLibreGL.Map | null;
-		isLoaded: () => boolean;
-	}>("map");
-
 	// Generate 100 random markers around NYC
 	function generateMarkers(count: number) {
 		const markers = [];
@@ -34,8 +29,13 @@
 	};
 
 	$effect(() => {
-		const map = mapCtx.getMap();
-		if (!map || !mapCtx.isLoaded()) return;
+		const mapCtx = getContext<{
+			getMap: () => MapLibreGL.Map | null;
+			isLoaded: () => boolean;
+		}>("map");
+
+		const map = mapCtx?.getMap();
+		if (!map || !mapCtx?.isLoaded()) return;
 
 		// Add GeoJSON source
 		map.addSource("markers", {

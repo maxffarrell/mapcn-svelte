@@ -3,11 +3,6 @@
 	import MapLibreGL from "maplibre-gl";
 	import { Map } from "$lib/components/ui/map";
 
-	const mapCtx = getContext<{
-		getMap: () => MapLibreGL.Map | null;
-		isLoaded: () => boolean;
-	}>("map");
-
 	let hoveredFeatureId: string | number | null = $state(null);
 
 	const nycParksGeoJSON = {
@@ -73,8 +68,13 @@
 	};
 
 	$effect(() => {
-		const map = mapCtx.getMap();
-		if (!map || !mapCtx.isLoaded()) return;
+		const mapCtx = getContext<{
+			getMap: () => MapLibreGL.Map | null;
+			isLoaded: () => boolean;
+		}>("map");
+
+		const map = mapCtx?.getMap();
+		if (!map || !mapCtx?.isLoaded()) return;
 
 		// Add GeoJSON source
 		map.addSource("parks", {
