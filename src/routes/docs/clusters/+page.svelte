@@ -18,7 +18,7 @@
 	title="Clusters"
 	description="Visualize large datasets with automatic point clustering."
 	prev={{ title: "Routes", href: "/docs/routes" }}
-	next={{ title: "Advanced", href: "/docs/advanced" }}
+	next={{ title: "Advanced", href: "/docs/advanced-usage" }}
 >
 	<DocsSection>
 		<p>

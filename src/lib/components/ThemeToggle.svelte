@@ -6,7 +6,7 @@
 	import { Kbd } from "$lib/registry/ui/kbd/index";
 	import * as Tooltip from "$lib/registry/ui/tooltip/index";
 
-	let mounted = browser ? false : true;
+	let mounted = $state(false);
 	let currentTheme: "light" | "dark";
 
 	const unsubscribe = theme.subscribe((t) => {
@@ -23,12 +23,16 @@
 	}
 </script>
 
-<Tooltip.Root>
-	<Tooltip.Trigger>
-		{#if !mounted}
-			<div class="size-4"></div>
-		{:else}
-			<Button onclick={toggleTheme} variant="ghost" aria-label="Toggle theme" size="icon-sm">
+{#if browser}
+	<Tooltip.Root>
+		<Tooltip.Trigger>
+			<Button
+				onclick={toggleTheme}
+				variant="ghost"
+				aria-label="Toggle theme"
+				size="icon-sm"
+				disabled={!mounted}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -50,9 +54,9 @@
 				</svg>
 				<span class="sr-only">Toggle theme</span>
 			</Button>
-		{/if}
-	</Tooltip.Trigger>
-	<Tooltip.Content class="flex items-center gap-2 pr-1">
-		Toggle Theme <Kbd>T</Kbd>
-	</Tooltip.Content>
-</Tooltip.Root>
+		</Tooltip.Trigger>
+		<Tooltip.Content class="flex items-center gap-2 pr-1">
+			Toggle Theme <Kbd>T</Kbd>
+		</Tooltip.Content>
+	</Tooltip.Root>
+{/if}

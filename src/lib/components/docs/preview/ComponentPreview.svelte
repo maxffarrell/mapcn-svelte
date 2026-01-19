@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$lib/utils";
 	import CopyButton from "$lib/components/CopyButton.svelte";
-	import { Select, SelectContent, SelectItem, SelectTrigger } from "$lib/registry/ui/select";
+	import * as Select from "$lib/registry/ui/select";
 
 	interface CodeFile {
 		name: string;
@@ -37,19 +37,21 @@
 	const allFiles = $derived(
 		files ? files : [{ name: "index.svelte", code: code!, highlightedCode: highlightedCode! }]
 	);
-	let selectedFileIndex = $state(0);
+
+	// Use string to satisfy Select component types
+	let selectedFileIndex = $state("0");
 
 	// Get currently selected file
-	const currentFile = $derived(allFiles[selectedFileIndex]);
+	let currentFile = $derived(allFiles[Number(selectedFileIndex)] || allFiles[0]);
 </script>
 
 <div class="w-full overflow-hidden rounded-lg border">
 	<div class="bg-muted/30 flex h-12 items-center justify-between border-b px-2">
-		<div class="flex gap-2">
+		<div class="flex items-center gap-2">
 			<button
 				onclick={() => (activeTab = "preview")}
 				class={cn(
-					"rounded px-2 py-1 text-xs font-medium transition-colors",
+					"rounded px-2 py-1 text-xs font-medium whitespace-nowrap transition-colors",
 					activeTab === "preview"
 						? "bg-muted text-foreground dark:bg-muted/80"
 						: "text-muted-foreground hover:bg-muted hover:text-foreground dark:hover:bg-muted/80"
@@ -61,7 +63,7 @@
 			<button
 				onclick={() => (activeTab = "code")}
 				class={cn(
-					"rounded px-3 py-1 text-xs font-medium transition-colors",
+					"rounded px-3 py-1 text-xs font-medium whitespace-nowrap transition-colors",
 					activeTab === "code"
 						? "bg-muted text-foreground dark:bg-muted/80"
 						: "text-muted-foreground hover:bg-muted hover:text-foreground dark:hover:bg-muted/80"
@@ -69,20 +71,22 @@
 			>
 				Code
 			</button>
-		</div>
 
-		{#if allFiles.length > 1}
-			<Select bind:value={selectedFileIndex}>
-				<SelectTrigger class="h-8 w-40 text-xs">
-					{currentFile.name}
-				</SelectTrigger>
-				<SelectContent>
-					{#each allFiles as file, i}
-						<SelectItem value={i.toString()} label={file.name} />
-					{/each}
-				</SelectContent>
-			</Select>
-		{/if}
+			{#if activeTab === "code" && allFiles.length > 1}
+				<Select.Root type="single" bind:value={selectedFileIndex}>
+					<Select.Trigger class="end h-8 w-auto max-w-[200px] min-w-[120px] text-xs">
+						<span class="truncate">{currentFile.name}</span>
+					</Select.Trigger>
+					<Select.Content>
+						{#each allFiles as file, i}
+							<Select.Item value={i.toString()} label={file.name}>
+								<span class="truncate">{file.name}</span>
+							</Select.Item>
+						{/each}
+					</Select.Content>
+				</Select.Root>
+			{/if}
+		</div>
 
 		<CopyButton command={currentFile.code} />
 	</div>

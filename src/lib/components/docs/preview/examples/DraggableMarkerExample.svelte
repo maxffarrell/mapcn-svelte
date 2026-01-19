@@ -4,7 +4,7 @@
 
 	let markerPosition = $state({
 		lng: -73.98,
-		lat: 40.76,
+		lat: 40.75,
 	});
 
 	function handleDragEnd(e: { lng: number; lat: number }) {
@@ -12,8 +12,8 @@
 	}
 </script>
 
-<div class="h-100 w-full">
-	<Map center={[-73.98, 40.76]} zoom={12}>
+<div class="h-[400px] w-full">
+	<Map center={[-73.98, 40.75]} zoom={12}>
 		<MapMarker
 			longitude={markerPosition.lng}
 			latitude={markerPosition.lat}
@@ -26,11 +26,11 @@
 				</div>
 			</MarkerContent>
 
-			<MarkerPopup>
+			<MarkerPopup closeOnClick={false} closeOnMove={false}>
 				<div class="space-y-1">
-					<p class="text-foreground font-medium">Draggable Marker</p>
+					<p class="text-foreground font-medium">Coordinates</p>
 					<p class="text-muted-foreground text-xs">
-						{markerPosition.lat.toFixed(4)}, {markerPosition.lng.toFixed(4)}
+						{markerPosition.lat.toFixed(4)},{markerPosition.lng.toFixed(4)}
 					</p>
 				</div>
 			</MarkerPopup>

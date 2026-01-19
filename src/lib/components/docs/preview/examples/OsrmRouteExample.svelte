@@ -115,7 +115,7 @@
 						<Clock class="size-3.5" />
 						<span class="font-medium">{formatDuration(route.duration)}</span>
 					</div>
-					<div class="text-muted-foreground/80 flex items-center gap-1.5 text-xs">
+					<div class="flex items-center gap-1.5 text-xs opacity-80">
 						<Route class="size-3" />
 						{formatDistance(route.distance)}
 					</div>

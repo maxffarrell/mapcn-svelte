@@ -11,12 +11,8 @@
 	import LayerMarkersExample from "$lib/components/docs/preview/examples/LayerMarkersExample.svelte";
 	import { page } from "$app/state";
 
-	const advancedUsageSource = $derived(page.data.advancedUsageSource);
-	const advancedUsageHighlighted = $derived(page.data.advancedUsageHighlighted);
-
-	const customLayerSource = $derived(page.data.customLayerSource);
-	const customLayerHighlighted = $derived(page.data.customLayerHighlighted);
-
+	const advancedUsageFiles = $derived(page.data.advancedUsageFiles);
+	const customLayerFiles = $derived(page.data.customLayerFiles);
 	const layerMarkersSource = $derived(page.data.layerMarkersSource);
 	const layerMarkersHighlighted = $derived(page.data.layerMarkersHighlighted);
 
@@ -101,7 +97,7 @@
 		</p>
 	</DocsSection>
 
-	<ComponentPreview code={advancedUsageSource} highlightedCode={advancedUsageHighlighted}>
+	<ComponentPreview files={advancedUsageFiles}>
 		<AdvancedUsageExample />
 	</ComponentPreview>
 
@@ -112,7 +108,7 @@
 		</p>
 	</DocsSection>
 
-	<ComponentPreview code={customLayerSource} highlightedCode={customLayerHighlighted}>
+	<ComponentPreview files={customLayerFiles}>
 		<CustomLayerExample />
 	</ComponentPreview>
 

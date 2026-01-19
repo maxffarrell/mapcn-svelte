@@ -71,14 +71,15 @@
 		});
 
 		// Build paint options
-		const paint: MapLibreGL.LinePaint = {
+		const paint: MapLibreGL.LineLayerSpecification["paint"] = {
 			"line-color": color,
 			"line-width": width,
 			"line-opacity": opacity,
 		};
 
 		if (dashArray) {
-			paint["line-dasharray"] = dashArray;
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			(paint as any)["line-dasharray"] = dashArray;
 		}
 
 		// Add layer
