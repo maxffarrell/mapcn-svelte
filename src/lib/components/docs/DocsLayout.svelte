@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { setContext, tick } from "svelte";
+	import { setContext } from "svelte";
 	import DocsHeader from "./DocsHeader.svelte";
 	import DocsToc from "./DocsToc.svelte";
 	import { findNeighbors } from "$lib/docs-navigation";
@@ -38,24 +38,18 @@
 	});
 
 	let registeredToc = $state<TocItem[]>([]);
-	let isUpdating = false;
+	let sectionRegistry: Record<string, TocItem> = {};
 
 	function registerSection(item: TocItem) {
-		if (registeredToc.some((i) => i.slug === item.slug) || isUpdating) return;
-		isUpdating = true;
-		registeredToc = [...registeredToc, item];
-		tick().then(() => {
-			isUpdating = false;
-		});
+		if (sectionRegistry[item.slug]) return;
+		sectionRegistry[item.slug] = item;
+		registeredToc = Object.values(sectionRegistry);
 	}
 
 	function unregisterSection(slug: string) {
-		if (!registeredToc.some((i) => i.slug === slug) || isUpdating) return;
-		isUpdating = true;
-		registeredToc = registeredToc.filter((item) => item.slug !== slug);
-		tick().then(() => {
-			isUpdating = false;
-		});
+		if (!sectionRegistry[slug]) return;
+		delete sectionRegistry[slug];
+		registeredToc = Object.values(sectionRegistry);
 	}
 
 	setContext(DOCS_TOC_CONTEXT, {

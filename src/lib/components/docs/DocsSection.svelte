@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getContext } from "svelte";
+	import { getContext, onMount, onDestroy } from "svelte";
 
 	const DOCS_TOC_CONTEXT = "docs-toc";
 
@@ -17,7 +17,7 @@
 	let tocContext: TocContext | null = null;
 
 	// Register with TOC context on mount
-	$effect.root(() => {
+	onMount(() => {
 		if (title && slug) {
 			try {
 				tocContext = getContext<TocContext>(DOCS_TOC_CONTEXT);
@@ -28,12 +28,12 @@
 				// Not in a DocsLayout context
 			}
 		}
+	});
 
-		return () => {
-			if (tocContext && title && slug) {
-				tocContext.unregisterSection(slug);
-			}
-		};
+	onDestroy(() => {
+		if (tocContext && title && slug) {
+			tocContext.unregisterSection(slug);
+		}
 	});
 </script>
 
