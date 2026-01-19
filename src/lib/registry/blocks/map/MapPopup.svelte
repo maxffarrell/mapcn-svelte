@@ -39,9 +39,10 @@
 		isLoaded: () => boolean;
 	}>("map");
 
-	const markerCtx = getContext<{
-		isDraggable?: () => boolean;
-	}>("marker") || {};
+	const markerCtx =
+		getContext<{
+			isDraggable?: () => boolean;
+		}>("marker") || {};
 
 	let popup: MapLibreGL.Popup | null = null;
 	let wrapperElement: HTMLDivElement | null = $state(null);
