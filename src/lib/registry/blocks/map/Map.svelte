@@ -50,7 +50,7 @@
 		light: styles?.light ?? defaultStyles.light,
 	});
 
-	const currentStyle = $derived(tailwindTheme === "dark" ? mapStyles.dark : mapStyles.light);
+	const currentStyle = $derived(tailwindTheme === "light" ? mapStyles.light : mapStyles.dark);
 
 	const isReady = $derived(isMounted && isLoaded && isStyleLoaded);
 
