@@ -166,6 +166,6 @@
 					</p>
 				</div>
 			{/each}
-		</div></DocsSection
-	>
+		</div>
+	</DocsSection>
 </DocsLayout>

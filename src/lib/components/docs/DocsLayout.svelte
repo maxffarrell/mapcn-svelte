@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DocsHeader from "./DocsHeader.svelte";
+	import DocsToc from "./DocsToc.svelte";
 	import { findNeighbors } from "$lib/docs-navigation";
 
 	interface NavLink {
@@ -7,12 +8,13 @@
 		href: string;
 	}
 
-	const { title, description, pathname, prev, next, children } = $props<{
+	const { title, description, pathname, prev, next, toc, children } = $props<{
 		title: string;
 		description: string;
 		pathname?: string;
 		prev?: NavLink;
 		next?: NavLink;
+		toc?: { title: string; slug: string }[];
 		children?: import("svelte").Snippet;
 	}>();
 
@@ -31,8 +33,16 @@
 <div>
 	<DocsHeader {title} {description} />
 
-	<div class="mt-10 space-y-10">
-		{@render children?.()}
+	<div
+		class="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_200px] lg:grid-cols-[minmax(0,1fr)_250px]"
+	>
+		<div class="mt-10 space-y-10">
+			{@render children?.()}
+		</div>
+
+		<div class="hidden md:block">
+			<DocsToc items={toc ?? []} />
+		</div>
 	</div>
 
 	{#if neighbors.previous || neighbors.next}
