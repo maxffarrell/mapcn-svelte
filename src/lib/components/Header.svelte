@@ -24,7 +24,7 @@
 			{/if}
 			<a href="/" class="flex items-center gap-1.5 transition-opacity hover:opacity-80">
 				<MapPin class="text-svelte size-4" />
-				<span class="flex-nowrap font-semibold tracking-tight">mapcn-svelte</span>
+				<span class="whitespace-nowrap font-semibold tracking-tight">mapcn-svelte</span>
 			</a>
 		</div>
 		<div class="flex h-4.5 items-center gap-2">

@@ -71,24 +71,28 @@
 			>
 				Code
 			</button>
+		</div>
 
+		<div class="flex items-center gap-2">
 			{#if activeTab === "code" && allFiles.length > 1}
 				<Select.Root type="single" bind:value={selectedFileIndex}>
-					<Select.Trigger class="end h-8 w-auto max-w-[200px] min-w-[120px] text-xs">
+					<Select.Trigger class="ms-2 w-auto max-w-40 text-xs sm:max-w-full">
 						<span class="truncate">{currentFile.name}</span>
 					</Select.Trigger>
 					<Select.Content>
 						{#each allFiles as file, i}
 							<Select.Item value={i.toString()} label={file.name}>
-								<span class="truncate">{file.name}</span>
+								<span class="">{file.name}</span>
 							</Select.Item>
 						{/each}
 					</Select.Content>
 				</Select.Root>
 			{/if}
-		</div>
 
-		<CopyButton command={currentFile.code} />
+			{#if allFiles.length === 1 || activeTab === "code"}
+				<CopyButton command={currentFile.code} />
+			{/if}
+		</div>
 	</div>
 
 	<div class={cn("h-100 overflow-hidden", className)}>
