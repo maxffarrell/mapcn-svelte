@@ -10,14 +10,14 @@
 		event.preventDefault();
 		const element = document.getElementById(slug);
 		if (element) {
-			const header = document.querySelector('header');
+			const header = document.querySelector("header");
 			const headerOffset = header ? header.offsetHeight + 20 : 100;
 			const elementPosition = element.getBoundingClientRect().top;
 			const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
 			window.scrollTo({
 				top: offsetPosition,
-				behavior: "smooth"
+				behavior: "smooth",
 			});
 		}
 	}
