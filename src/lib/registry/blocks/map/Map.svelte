@@ -106,6 +106,9 @@
 			// else we have to force update every layer on setStyle change
 			styleTimeoutId = setTimeout(() => {
 				isStyleLoaded = true;
+				if (!initialStyleApplied) {
+					initialStyleApplied = true;
+				}
 				if (projection) {
 					mapInstance.setProjection(projection);
 				}
