@@ -4,7 +4,7 @@
 
 	let { items, className }: { items: TocItem[]; className?: string } = $props();
 
-	const { activeId } = useActiveItem(() => items);
+	const activeItemTracker = useActiveItem(() => items);
 
 	function scrollTo(slug: string, event: MouseEvent) {
 		event.preventDefault();
@@ -24,7 +24,7 @@
 				onclick={(e) => scrollTo(item.slug, e)}
 				class={cn(
 					"text-muted-foreground hover:text-foreground text-[0.8rem] no-underline transition-colors",
-					item.slug === activeId && "text-foreground"
+					item.slug === activeItemTracker.activeId && "text-foreground"
 				)}
 			>
 				{item.title}
