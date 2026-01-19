@@ -5,7 +5,7 @@
 	}>();
 </script>
 
-<div class="space-y-2">
+<div class="w-7/12 space-y-2">
 	<h1 class="text-foreground text-3xl font-semibold tracking-tight">{title}</h1>
 	<p class="text-muted-foreground leading-relaxed">
 		{description}

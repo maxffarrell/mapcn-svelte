@@ -15,9 +15,9 @@
 			<MobileSidebarTrigger />
 		</Header>
 
-		<div class="flex flex-1">
+		<div class="container flex flex-1">
 			<DocSidebar />
-			<main class="mx-auto w-full max-w-3xl flex-1 px-6 py-8">
+			<main class="w-full flex-1">
 				{@render children()}
 			</main>
 		</div>
