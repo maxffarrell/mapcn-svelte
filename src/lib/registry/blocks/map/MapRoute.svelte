@@ -70,16 +70,20 @@
 			},
 		});
 
-		// Build paint options
-		const paint: MapLibreGL.LineLayerSpecification["paint"] = {
-			"line-color": color,
-			"line-width": width,
-			"line-opacity": opacity,
+		// Build paint options with transition definitions
+		// Use default values here - they'll be updated by the paint property effect
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const paint: any = {
+			"line-color": "#94a3b8", // Start with gray (unselected color)
+			"line-width": 5, // Start with unselected width
+			"line-opacity": 0.6, // Start with unselected opacity
+			"line-color-transition": { duration: 300, delay: 0 },
+			"line-width-transition": { duration: 300, delay: 0 },
+			"line-opacity-transition": { duration: 300, delay: 0 },
 		};
 
 		if (dashArray) {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			(paint as any)["line-dasharray"] = dashArray;
+			paint["line-dasharray"] = dashArray;
 		}
 
 		// Add layer
@@ -137,6 +141,15 @@
 
 		if (dashArray) {
 			map.setPaintProperty(layerId, "line-dasharray", dashArray);
+		}
+
+		// Move selected routes to top (when opacity is 1, it's selected)
+		if (opacity === 1) {
+			try {
+				map.moveLayer(layerId);
+			} catch {
+				// Layer might not exist yet
+			}
 		}
 	});
 
