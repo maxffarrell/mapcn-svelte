@@ -43,12 +43,11 @@
 
 		return null;
 	}
-<\/script> 
+<\/script>
 	// Usage
 	<Map center={[-74, 40.7]} zoom={10}>
 		<MapEventListener />
-	</Map>
-<\/script>`;
+	</Map>`;
 </script>
 
 <svelte:head>
