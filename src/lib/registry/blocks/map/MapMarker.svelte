@@ -42,7 +42,7 @@
 		ondrag,
 		ondragend,
 		draggable = false,
-		anchor = "bottom",
+		anchor = "center",
 		offset,
 		rotation,
 		pitchAlignment,
