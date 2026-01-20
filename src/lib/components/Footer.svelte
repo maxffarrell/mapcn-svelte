@@ -38,7 +38,7 @@
 		<div class="flex items-center gap-6">
 			<a href="/docs" class="hover:text-foreground transition-colors">Documentation</a>
 			<a
-				href="https://github.com/AnmolSaini16/mapcn"
+				href="https://github.com/MariusLang/mapcn-svelte"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="hover:text-foreground transition-colors"
