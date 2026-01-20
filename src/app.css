@@ -135,12 +135,6 @@
 	}
 }
 
-/* Reduce font weights by 100 */
-
-.font-mono {
-	font-weight: 300 !important;
-}
-
 .container {
 	@apply mx-auto max-w-360 px-6;
 }

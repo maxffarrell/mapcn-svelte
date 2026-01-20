@@ -49,7 +49,7 @@
 		</p>
 	</DocsSection>
 
-	<ComponentPreview code={osrmRouteSource} highlightedCode={osrmRouteHighlighted}>
+	<ComponentPreview code={osrmRouteSource} highlightedCode={osrmRouteHighlighted} class="h-125">
 		<OsrmRouteExample />
 	</ComponentPreview>
 </DocsLayout>

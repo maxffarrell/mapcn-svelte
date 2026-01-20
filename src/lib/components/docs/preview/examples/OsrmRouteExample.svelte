@@ -57,16 +57,8 @@
 		}
 	}
 
-	// Sort routes: non-selected first, selected last (renders on top)
-	const sortedRoutes = $derived(
-		routes
-			.map((route, index) => ({ route, index }))
-			.sort((a, b) => {
-				if (a.index === selectedIndex) return 1;
-				if (b.index === selectedIndex) return -1;
-				return 0;
-			})
-	);
+	// Map routes with their indices for rendering
+	const routesWithIndex = $derived(routes.map((route, index) => ({ route, index })));
 
 	// Fetch routes on mount
 	fetchRoutes();
@@ -74,9 +66,10 @@
 
 <div class="relative h-125 w-full">
 	<Map center={[4.69, 52.14]} zoom={8.5}>
-		{#each sortedRoutes as { route, index } (index)}
+		{#each routesWithIndex as { route, index } (index)}
 			{@const isSelected = index === selectedIndex}
 			<MapRoute
+				id={`route-${index}`}
 				coordinates={route.coordinates}
 				color={isSelected ? "#6366f1" : "#94a3b8"}
 				width={isSelected ? 6 : 5}
