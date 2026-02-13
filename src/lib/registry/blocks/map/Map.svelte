@@ -235,8 +235,10 @@
 		}
 
 		internalUpdate = true;
+		map!.once("moveend", () => {
+			internalUpdate = false;
+		});
 		map.jumpTo(next);
-		internalUpdate = false;
 	});
 
 	$effect(() => {
