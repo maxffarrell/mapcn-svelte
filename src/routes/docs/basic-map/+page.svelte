@@ -12,11 +12,8 @@
 	const basicMapSource = $derived(page.data.basicMapSource);
 	const basicMapHighlighted = $derived(page.data.basicMapHighlighted);
 
-	const controlledMapSource = $derived(page.data.controlledMapSource);
-	const controlledMapHighlighted = $derived(page.data.controlledMapHighlighted);
-
-	const customStyleSource = $derived(page.data.customStyleSource);
-	const customStyleHighlighted = $derived(page.data.customStyleHighlighted);
+	const controlledMapFiles = $derived(page.data.controlledMapFiles);
+	const customStyleFiles = $derived(page.data.customStyleFiles);
 </script>
 
 <svelte:head>
@@ -48,7 +45,7 @@
 		</p>
 	</DocsSection>
 
-	<ComponentPreview code={controlledMapSource} highlightedCode={controlledMapHighlighted}>
+	<ComponentPreview files={controlledMapFiles}>
 		<ControlledMapExample />
 	</ComponentPreview>
 
@@ -62,7 +59,7 @@
 		</p>
 	</DocsSection>
 
-	<ComponentPreview code={customStyleSource} highlightedCode={customStyleHighlighted}>
+	<ComponentPreview files={customStyleFiles}>
 		<CustomStyleExample />
 	</ComponentPreview>
 </DocsLayout>

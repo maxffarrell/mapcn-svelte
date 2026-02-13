@@ -42,7 +42,9 @@
 	let isMounted = $state(false);
 	let isLoaded = $state(false);
 	let isStyleLoaded = $state(false);
+	let isInteracting = $state(false);
 	let initialStyleApplied = false;
+	let initialCenterZoomApplied = false;
 	let styleTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
 	const mapStyles = $derived({
@@ -122,6 +124,15 @@
 		mapInstance.on("load", loadHandler);
 		mapInstance.on("styledata", styleDataHandler);
 
+		mapInstance.on("dragstart", () => (isInteracting = true));
+		mapInstance.on("dragend", () => (isInteracting = false));
+		mapInstance.on("zoomstart", () => (isInteracting = true));
+		mapInstance.on("zoomend", () => (isInteracting = false));
+		mapInstance.on("rotatestart", () => (isInteracting = true));
+		mapInstance.on("rotateend", () => (isInteracting = false));
+		mapInstance.on("pitchstart", () => (isInteracting = true));
+		mapInstance.on("pitchend", () => (isInteracting = false));
+
 		map = mapInstance;
 	});
 
@@ -133,15 +144,32 @@
 		}
 
 		untrack(() => {
+			const currCenter = map!.getCenter();
+			const currZoom = map!.getZoom();
+			const currBearing = map!.getBearing();
+			const currPitch = map!.getPitch();
+
 			isStyleLoaded = false;
 			map!.setStyle(style, { diff: true });
+
+			map!.once("styledata", () => {
+				map!.jumpTo({
+					center: currCenter,
+					zoom: currZoom,
+					bearing: currBearing,
+					pitch: currPitch,
+				});
+			});
 		});
 	});
 
 	$effect(() => {
-		if (!map || !isReady) {
+		if (!map || !isReady || isInteracting || initialCenterZoomApplied) {
 			return;
 		}
+
+		// Only apply initial center/zoom once, then let user move freely
+		initialCenterZoomApplied = true;
 
 		const [lng, lat] = center;
 
