@@ -36,13 +36,13 @@
 
 	onMount(() => {
 		mapInstance = mapCtx.getMap();
-		
+
 		if (mapInstance) {
 			mapInstance.on("move", updateViewport);
 			mapInstance.on("zoom", updateViewport);
 			mapInstance.on("rotate", updateViewport);
 			mapInstance.on("pitch", updateViewport);
-			
+
 			// Initialize viewport with current map state
 			updateViewport();
 		}

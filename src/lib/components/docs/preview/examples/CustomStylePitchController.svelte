@@ -21,7 +21,7 @@
 
 	$effect(() => {
 		if (!mapInstance) return;
-		
+
 		const is3D = style === "openstreetmap3d";
 		mapInstance.easeTo({ pitch: is3D ? 60 : 0, duration: 500 });
 	});
