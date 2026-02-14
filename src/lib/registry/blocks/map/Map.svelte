@@ -83,6 +83,7 @@
 	let isLoaded = $state(false);
 	let isStyleLoaded = $state(false);
 	let isInteracting = $state(false);
+	let hasInitiallyLoaded = $state(false);
 	let initialStyleApplied = false;
 	let initialCenterZoomApplied = false;
 	let styleTimeoutId: ReturnType<typeof setTimeout> | null = null;
@@ -111,7 +112,8 @@
 
 	setContext("map", {
 		getMap: () => map,
-		isLoaded: () => isReady,
+		isLoaded: () => hasInitiallyLoaded,
+		isStyleReady: () => isReady,
 	});
 
 	function clearStyleTimeout() {
@@ -189,6 +191,9 @@
 				isStyleLoaded = true;
 				if (!initialStyleApplied) {
 					initialStyleApplied = true;
+				}
+				if (!hasInitiallyLoaded) {
+					hasInitiallyLoaded = true;
 				}
 				if (projection) {
 					mapInstance.setProjection(projection);
@@ -317,7 +322,7 @@
 			</div>
 		</div>
 	{/if}
-	{#if isReady}
+	{#if hasInitiallyLoaded}
 		{@render children?.()}
 	{/if}
 </div>

@@ -37,7 +37,7 @@
 
 	const mapCtx = getContext<{
 		getMap: () => MapLibreGL.Map | null;
-		isLoaded: () => boolean;
+		isStyleReady: () => boolean;
 	}>("map");
 
 	const id = crypto.randomUUID();
@@ -55,7 +55,7 @@
 	// Add source and layers when map is ready
 	$effect(() => {
 		const map = mapCtx.getMap();
-		const loaded = mapCtx.isLoaded();
+		const loaded = mapCtx.isStyleReady();
 
 		if (!loaded || !map) return;
 
@@ -153,7 +153,7 @@
 	// Update source data when data prop changes (only for non-URL data)
 	$effect(() => {
 		const map = mapCtx.getMap();
-		const loaded = mapCtx.isLoaded();
+		const loaded = mapCtx.isStyleReady();
 
 		if (!loaded || !map || typeof data === "string") return;
 
@@ -166,7 +166,7 @@
 	// Update layer styles when props change
 	$effect(() => {
 		const map = mapCtx.getMap();
-		const loaded = mapCtx.isLoaded();
+		const loaded = mapCtx.isStyleReady();
 
 		if (!loaded || !map) return;
 
@@ -205,7 +205,7 @@
 	// Handle click events
 	$effect(() => {
 		const map = mapCtx.getMap();
-		const loaded = mapCtx.isLoaded();
+		const loaded = mapCtx.isStyleReady();
 
 		if (!loaded || !map) return;
 
