@@ -35,9 +35,13 @@
 						onclick={(e) => scrollTo(item.slug, e)}
 						class={cn(
 							"relative py-1 pl-3 text-[13px] no-underline transition-colors",
-							item.slug === activeItemTracker.activeId && "text-foreground"
+							item.slug === activeItemTracker.activeId && "text-foreground font-medium"
 						)}
 					>
+						{#if item.slug === activeItemTracker.activeId}
+							<div
+								class="bg-foreground absolute top-1 bottom-1 left-0 w-px rounded-full"
+							></div>{/if}
 						{item.title}
 					</a>
 				{/each}
