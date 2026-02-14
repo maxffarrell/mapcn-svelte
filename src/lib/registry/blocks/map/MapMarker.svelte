@@ -106,9 +106,7 @@
 		if (rotationAlignment !== undefined) markerOptions.rotationAlignment = rotationAlignment;
 
 		// Create and add marker
-		const markerInstance = new MapLibreGL.Marker(markerOptions)
-			.setLngLat([lng, lat])
-			.addTo(map);
+		const markerInstance = new MapLibreGL.Marker(markerOptions).setLngLat([lng, lat]).addTo(map);
 
 		marker = markerInstance;
 
