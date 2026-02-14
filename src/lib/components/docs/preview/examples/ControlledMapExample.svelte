@@ -23,7 +23,7 @@
 		<div
 			role="status"
 			aria-live="polite"
-			class="absolute left-2 top-2 z-10 flex flex-wrap gap-x-3 gap-y-1 rounded border bg-background/80 px-2 py-1.5 text-xs font-mono backdrop-blur"
+			class="bg-background/80 absolute top-2 left-2 z-10 flex flex-wrap gap-x-3 gap-y-1 rounded border px-2 py-1.5 font-mono text-xs backdrop-blur"
 		>
 			<span>
 				<span class="text-muted-foreground">lng:</span>

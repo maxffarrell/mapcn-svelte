@@ -3,6 +3,7 @@
 	import MapLibreGL from "maplibre-gl";
 	import "maplibre-gl/dist/maplibre-gl.css";
 	import { browser } from "$app/environment";
+	import { theme } from "$lib/theme";
 
 	// Check document class for theme (works with next-themes, etc.)
 	function getDocumentTheme(): "light" | "dark" | null {
@@ -123,8 +124,18 @@
 	onMount(() => {
 		isMounted = true;
 
+		// Subscribe to theme store for instant updates
+		const themeUnsubscribe = theme.subscribe((value) => {
+			tailwindTheme = value;
+		});
+
+		// Clean up theme subscription
+		onDestroy(() => {
+			themeUnsubscribe();
+		});
+
 		if (browser) {
-			// Watch for document class changes (e.g., next-themes toggling dark class)
+			// Also watch for document class changes (e.g., external theme togglers)
 			const updateTheme = () => {
 				const docTheme = getDocumentTheme();
 				// Only use document theme if set, otherwise fall back to system preference

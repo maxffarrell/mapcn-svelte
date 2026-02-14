@@ -1,5 +1,5 @@
 import { highlightCode } from "$lib/highlight";
-import { getExampleSource, getExampleSources } from "$lib/examples";
+import { getExampleSource } from "$lib/examples";
 
 export const load = async () => {
 	const basicMapSource = getExampleSource("BasicMapExample");

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ArrowDown, ArrowUp, CornerDownLeft, FileText, SearchIcon } from "@lucide/svelte";
+	import { ArrowDown, ArrowUp, CornerDownLeft, SearchIcon } from "@lucide/svelte";
 	import * as Command from "$lib/registry/ui/command/index.js";
 	import { Kbd } from "$lib/registry/ui/kbd/index.js";
 	import { docsNavigation } from "$lib/docs-navigation";

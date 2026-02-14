@@ -23,7 +23,7 @@
 		<div class="absolute top-2 right-2 z-10">
 			<select
 				bind:value={style}
-				class="rounded-md border bg-background px-2 py-1 text-sm text-foreground shadow"
+				class="bg-background text-foreground rounded-md border px-2 py-1 text-sm shadow"
 			>
 				<option value="default">Default (Carto)</option>
 				<option value="openstreetmap">OpenStreetMap</option>

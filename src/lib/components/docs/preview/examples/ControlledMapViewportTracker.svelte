@@ -13,6 +13,7 @@
 		viewport: MapViewport;
 	}
 
+	// eslint-disable-next-line no-useless-assignment
 	let { viewport = $bindable() }: Props = $props();
 
 	const mapCtx = getContext<{
@@ -26,22 +27,20 @@
 		if (!mapInstance) return;
 
 		const center = mapInstance.getCenter();
-		viewport = {
-			center: [center.lng, center.lat],
+		const newViewport = {
+			center: [center.lng, center.lat] as [number, number],
 			zoom: mapInstance.getZoom(),
 			bearing: mapInstance.getBearing(),
 			pitch: mapInstance.getPitch(),
 		};
+		viewport = newViewport;
 	}
 
 	onMount(() => {
 		mapInstance = mapCtx.getMap();
 
 		if (mapInstance) {
-			// The 'move' event fires during zoom, rotate, and pitch changes
 			mapInstance.on("move", updateViewport);
-
-			// Initialize viewport with current map state
 			updateViewport();
 		}
 	});
