@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/state";
 	import { cn } from "$lib/utils";
+	import * as Breadcrumb from "$lib/registry/ui/breadcrumb";
 	import { SidebarTrigger } from "$lib/registry/ui/sidebar";
 	import { docsNavigation, type NavItem } from "$lib/docs-navigation";
 
@@ -42,28 +43,24 @@
 	<nav class="flex items-center gap-3">
 		<SidebarTrigger />
 		<div class="bg-border h-4 w-px shrink-0"></div>
-		<ol
-			class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5"
-		>
-			<li class="inline-flex items-center gap-1.5">
-				<a href="/docs" class="hover:text-foreground transition-colors">Docs</a>
-			</li>
-			<li aria-hidden="true" class="inline-flex items-center gap-1.5">
-				<span class="text-muted-foreground/80">/</span>
-			</li>
-			<li class="inline-flex items-center gap-1.5">
-				<a href={groupHref} class="hover:text-foreground transition-colors">
-					{activeItem?.groupTitle ?? "Overview"}
-				</a>
-			</li>
-			{#if pathname !== "/docs" && pathname !== "/docs/basic-map"}
-				<li aria-hidden="true" class="inline-flex items-center gap-1.5">
-					<span class="text-muted-foreground/80">/</span>
-				</li>
-				<li class="text-foreground inline-flex min-w-0 items-center gap-1.5 truncate font-normal">
-					<span>{activeItem?.title ?? "Documentation"}</span>
-				</li>
-			{/if}
-		</ol>
+		<Breadcrumb.Root>
+			<Breadcrumb.List>
+				<Breadcrumb.Item>
+					<Breadcrumb.Link href="/docs">Docs</Breadcrumb.Link>
+				</Breadcrumb.Item>
+				<Breadcrumb.Separator />
+				<Breadcrumb.Item>
+					<Breadcrumb.Link href={groupHref}>
+						{activeItem?.groupTitle ?? "Overview"}
+					</Breadcrumb.Link>
+				</Breadcrumb.Item>
+				{#if pathname !== "/docs" && pathname !== "/docs/basic-map"}
+					<Breadcrumb.Separator />
+					<Breadcrumb.Item class="min-w-0 truncate">
+						<Breadcrumb.Page>{activeItem?.title ?? "Documentation"}</Breadcrumb.Page>
+					</Breadcrumb.Item>
+				{/if}
+			</Breadcrumb.List>
+		</Breadcrumb.Root>
 	</nav>
 </header>

@@ -38,11 +38,11 @@
 	onclick={() => (open = true)}
 	aria-label="Search documentation"
 	class={cn(
-		"group dark:border-border/60 border-border/80 text-muted-foreground hidden w-[200px] items-center text-sm font-normal md:flex",
+		"group dark:border-border/60 border-border/80 text-muted-foreground hidden w-[200px] items-center text-sm md:flex",
 		className
 	)}
 >
-	<SearchIcon className="size-3.5 shrink-0" />
+	<SearchIcon class="size-3.5 shrink-0" />
 	<span>Search docs...</span>
 	<KbdGroup class="ml-auto">
 		<Kbd>⌘</Kbd>
