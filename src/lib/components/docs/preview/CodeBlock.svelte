@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { highlightCode } from "$lib/highlight";
 	import CopyButton from "$lib/components/CopyButton.svelte";
 	import { onMount } from "svelte";
 
@@ -15,8 +14,34 @@
 
 	let highlightedCode = $state<string>("");
 
-	onMount(async () => {
-		highlightedCode = await highlightCode(code, language);
+	onMount(() => {
+		let cancelled = false;
+		const win = window as Window & {
+			requestIdleCallback?: (callback: IdleRequestCallback) => number;
+			cancelIdleCallback?: (id: number) => void;
+		};
+
+		const runHighlight = async () => {
+			const { highlightCode } = await import("$lib/highlight");
+			const html = await highlightCode(code, language);
+			if (!cancelled) {
+				highlightedCode = html;
+			}
+		};
+
+		if (typeof win.requestIdleCallback === "function") {
+			const idleId = win.requestIdleCallback(() => void runHighlight());
+			return () => {
+				cancelled = true;
+				win.cancelIdleCallback?.(idleId);
+			};
+		}
+
+		const timeoutId = setTimeout(() => void runHighlight(), 150);
+		return () => {
+			cancelled = true;
+			clearTimeout(timeoutId);
+		};
 	});
 </script>
 
