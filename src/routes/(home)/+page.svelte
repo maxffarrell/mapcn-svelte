@@ -6,11 +6,16 @@
 
 	let ExamplesGrid: typeof import("$lib/components/home/ExamplesGrid.svelte").default | null =
 		$state(null);
+	let examplesLoadFailed = $state(false);
 
 	onMount(() => {
 		const loadExamples = async () => {
-			const module = await import("$lib/components/home/ExamplesGrid.svelte");
-			ExamplesGrid = module.default;
+			try {
+				const module = await import("$lib/components/home/ExamplesGrid.svelte");
+				ExamplesGrid = module.default;
+			} catch {
+				examplesLoadFailed = true;
+			}
 		};
 
 		if ("requestIdleCallback" in window) {
@@ -18,7 +23,7 @@
 			return;
 		}
 
-		setTimeout(() => void loadExamples(), 0);
+		setTimeout(() => void loadExamples(), 150);
 	});
 </script>
 
@@ -37,6 +42,10 @@
 		<section class="container px-6">
 			{#if ExamplesGrid}
 				<ExamplesGrid />
+			{:else if examplesLoadFailed}
+				<p class="text-muted-foreground py-8 text-center text-sm">
+					Unable to load interactive examples right now.
+				</p>
 			{:else}
 				<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
 					<div
